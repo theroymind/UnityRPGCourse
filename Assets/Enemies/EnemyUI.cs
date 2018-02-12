@@ -15,7 +15,8 @@ public class EnemyUI : MonoBehaviour {
     void Start()
     {
         cameraToLookAt = Camera.main;
-        Instantiate(enemyCanvasPrefab, transform.position, Quaternion.identity, transform);
+        var canvasClone = Instantiate(enemyCanvasPrefab, transform.position, Quaternion.identity, transform);
+        canvasClone.transform.position = transform.position;
     }
 
     // Update is called once per frame 
