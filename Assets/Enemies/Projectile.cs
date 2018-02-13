@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-    [SerializeField] float damageCaused = 10f;
+    float damageCaused;
+    public float projectileSpeed;
+
+    public void SetDamage(float damage) {
+        damageCaused = damage;
+    }
 
     private void OnTriggerEnter(Collider collider) {
         Component damageableComponent = collider.gameObject.GetComponent(typeof(IDamageable));
