@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable {
 
 
     bool isAttacking = false;
-    float currentHealthPoints = 100f;
+    float currentHealthPoints;
     AICharacterControl aiCharacterControl = null;
     GameObject player = null;
 
@@ -25,10 +25,12 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     public void TakeDamage(float damage) {
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+        if (currentHealthPoints <= 0) Destroy(gameObject);
     }
 
     void Start()
     {
+        currentHealthPoints = maxHealthPoints;
         player = GameObject.FindGameObjectWithTag("Player");
         aiCharacterControl = GetComponent<AICharacterControl>();
     }
